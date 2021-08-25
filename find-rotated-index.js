@@ -1,4 +1,7 @@
 function findRotatedIndex(arr, val) {
+    if (arr[0]<=arr[arr.length-1]){
+        return binarySearch(arr,0,arr.length-1,val);
+    }
     const peakIdx = findPeak(arr);
     let result=-1;
     if (val>=arr[0] && val<=arr[peakIdx]){
@@ -33,15 +36,18 @@ function findPeak(arr){
     let right=arr.length-1;
     while (left<=right){
         let mid = left+Math.floor((right-left)/2);
-        if (mid===0 && mid===arr.length-1){
-            return -1;
-        }
         if (arr[mid]>arr[mid-1] && arr[mid]>arr[mid+1]){
             return mid;
         }else if (arr[mid] > arr[left] && arr[mid]>arr[right]){
             left = mid+1;
         }else if (arr[mid] < arr[left] && arr[mid]<arr[right]){
             right = mid-1;
+        }
+        if (mid===0){
+            left=mid+1;
+        }
+        if (mid===arr.length-1){
+            right=mid-1;
         }
     }
     return -1;
