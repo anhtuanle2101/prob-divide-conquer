@@ -3,7 +3,7 @@ function sortedFrequency(arr, val) {
     if (firstIdx ===-1){
         return -1;
     }
-    const lastIdx = findLast(arr,val);
+    const lastIdx = findLast(arr,val);d
     return lastIdx-firstIdx+1;
 }
 
